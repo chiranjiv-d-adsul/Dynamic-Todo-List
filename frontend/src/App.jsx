@@ -4,7 +4,8 @@ import axios from 'axios';
 import TaskList from './components/TaskList';
 import './index.css';
 
-axios.defaults.baseURL = "http://localhost:5000";
+// axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL =  "https://todo-backend-sdry.onrender.com/";
 
 axios.defaults.withCredentials = true;
 
