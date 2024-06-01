@@ -1,18 +1,49 @@
 import React from 'react';
 
-const Task = ({ task, moveTask, editTask, deleteTask, index,setActiveTask}) => {
+const Task = ({ task, moveTask, editTask, deleteTask, setActiveTask}) => {
     const nextStatus = {
         'Pending': 'In Progress',
         'In Progress': 'Completed'
     };
 
+    // Touch event handlers
+    const handleTouchStart = (e) => {
+        e.preventDefault(); // Prevent default to avoid conflicts with scrolling
+        setActiveTask(task);
+        const touch = e.touches[0];
+        setTouchPosition({
+            x: touch.clientX,
+            y: touch.clientY,
+        });
+    };
+
+    const handleTouchEnd = (e) => {
+        e.preventDefault();
+        setActiveTask(null);
+        setTouchPosition(null);
+    };
+
+    const handleTouchMove = (e) => {
+        // Custom logic to handle touch move if needed
+        if (!touchPosition) return;
+
+        const touch = e.touches[0];
+        const newX = touch.clientX - touchPosition.x;
+        const newY = touch.clientY - touchPosition.y;
+
+        e.target.style.transform = `translate(${newX}px, ${newY}px)`;
+    };
 
     return (
 
             <div className=" bg-white p-4 rounded shadow mb-4 flex justify-between items-center cursor-grab active:border-2 active:border-blue-500"
              draggable = "true"
                                 onDragStart={() => setActiveTask(task)}
-                                    onDragEnd={() => setActiveTask(null)}>
+                                    onDragEnd={() => setActiveTask(null)}
+                                    onTouchStart={handleTouchStart}
+                                    onTouchEnd={handleTouchEnd}
+                                    onTouchMove={handleTouchMove}
+                                    >
             <div>
                 <h3 className="text-lg font-bold text-[#485151]">{task.title}</h3>
                 <p>{task.description}</p>
