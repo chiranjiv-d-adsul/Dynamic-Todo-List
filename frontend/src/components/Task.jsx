@@ -6,33 +6,32 @@ const Task = ({ task, moveTask, editTask, deleteTask, setActiveTask}) => {
         'In Progress': 'Completed'
     };
 
-    // Touch event handlers
-    const handleTouchStart = (e) => {
-        e.preventDefault(); // Prevent default to avoid conflicts with scrolling
-        setActiveTask(task);
-        const touch = e.touches[0];
-        setTouchPosition({
-            x: touch.clientX,
-            y: touch.clientY,
-        });
-    };
 
-    const handleTouchEnd = (e) => {
-        e.preventDefault();
-        setActiveTask(null);
-        setTouchPosition(null);
-    };
+    // const handleTouchStart = (e) => {
+    //     e.preventDefault();
+    //     setActiveTask(task);
+    //     const touch = e.touches[0];
+    //     setTouchPosition({
+    //         x: touch.clientX,
+    //         y: touch.clientY,
+    //     });
+    // };
 
-    const handleTouchMove = (e) => {
-        // Custom logic to handle touch move if needed
-        if (!touchPosition) return;
+    // const handleTouchEnd = (e) => {
+    //     e.preventDefault();
+    //     setActiveTask(null);
+    //     setTouchPosition(null);
+    // };
 
-        const touch = e.touches[0];
-        const newX = touch.clientX - touchPosition.x;
-        const newY = touch.clientY - touchPosition.y;
+    // const handleTouchMove = (e) => {
+    //     if (!touchPosition) return;
 
-        e.target.style.transform = `translate(${newX}px, ${newY}px)`;
-    };
+    //     const touch = e.touches[0];
+    //     const newX = touch.clientX - touchPosition.x;
+    //     const newY = touch.clientY - touchPosition.y;
+
+    //     e.target.style.transform = `translate(${newX}px, ${newY}px)`;
+    // };
 
     return (
 
@@ -40,9 +39,9 @@ const Task = ({ task, moveTask, editTask, deleteTask, setActiveTask}) => {
              draggable = "true"
                                 onDragStart={() => setActiveTask(task)}
                                     onDragEnd={() => setActiveTask(null)}
-                                    onTouchStart={handleTouchStart}
-                                    onTouchEnd={handleTouchEnd}
-                                    onTouchMove={handleTouchMove}
+                                    // onTouchStart={handleTouchStart}
+                                    // onTouchEnd={handleTouchEnd}
+                                    // onTouchMove={handleTouchMove}
                                     >
             <div>
                 <h3 className="text-lg font-bold text-[#485151]">{task.title}</h3>
