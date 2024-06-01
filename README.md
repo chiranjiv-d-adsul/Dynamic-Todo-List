@@ -1,5 +1,7 @@
 # Dynamic To-Do List Application
 
+### Deployed Application :- https://iridescent-bombolone-8c2d79.netlify.app/
+### Drive Link :- https://drive.google.com/file/d/182hN4aWVpbpTs59DxGTixBohwCZk1_ji/view
 ## Setup
 
 ### Backend
