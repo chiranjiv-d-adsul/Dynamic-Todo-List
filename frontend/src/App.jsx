@@ -4,8 +4,8 @@ import TaskList from "./components/TaskList";
 import PopupModal from "./components/PopupModal";
 import "./index.css";
 
-axios.defaults.baseURL = "http://localhost:5000";
-// axios.defaults.baseURL =  "https://todo-backend-eg9s.onrender.com";
+// axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL =  "https://todo-backend-eg9s.onrender.com";
 
 axios.defaults.withCredentials = true;
 
